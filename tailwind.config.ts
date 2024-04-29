@@ -9,22 +9,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'primary': '#000000'
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        body: {
+          DEFAULT: "var(--body)",
+          muted: "var(--body-muted)",
+        },
+        accent: "var(--accent)",
+        background: {
+          DEFAULT: "var(--background)",
+          muted: "var(--background-muted)",
+        },
+        border: "var(--border)",
       },
       fontFamily: {
-        'sans': ['Inter', 'sans-serif']
+        kanit: ["Kanit", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
       },
       container: {
         center: true,
-        padding: {
-          DEFAULT: '2rem',
-          sm: '1rem',
-        },
+        padding: "2rem",
         screens: {
-          '2xl': '1440px'
-        }
-      }
-    }
+          "2xl": "1440px",
+        },
+      },
+    },
   },
   plugins: [],
 };

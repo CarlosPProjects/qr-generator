@@ -1,16 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-  :root{
+@layer base {
+  :root {
     --primary: #000000;
-    --secondary: #ffffff;
-    --body: #000000;
+
+    --secondary: #fafafa;
+
+    --body: #222222;
+    --body-muted: #f6f6f6;
+
     --accent: #000000;
+
+    --background: #f7cd56;
+    --background-muted: #f6f6f6;
+
+    --border: #cacaca;
   }
 
-  html{
-    color-scheme: light dark;
+  body {
+    background-color: #F3E5AB;
+    background-image: url("/pattern.svg");
+  }
+}
+
+@layer components {
+  .__mainContainer {
+    border: 0.2rem solid #000;
+    box-shadow: 0.5rem 0.4rem 0 0.1rem #000;
+    border-radius: 0.5rem;
   }
 }
