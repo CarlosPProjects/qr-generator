@@ -1,21 +1,30 @@
 "use client";
 
-import DownloadQr from "@/components/DownloadQr";
-import QrLoader from "@/components/QrLoader";
-import { generateCodeQr } from "@/utils/generator";
+import Download from "@/components/Download";
+import Loader from "@/components/Loader";
+import { Input } from "@/components/ui/input";
+import { useEncodedTextContext } from "@/context/encoded-text.context";
+import { useImageFormatContext } from "@/context/image-format.context";
+import { generateCodeQr } from "@/lib/generator";
+import { EImageFormat } from "@/types/image-format.interface";
 import Image from "next/image";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [encodedText, setEncodedText] = useState<string>("localhost");
+  const { imageFormatValue } = useImageFormatContext();
+  const { encodedTextValue, setEncodedTextValue } = useEncodedTextContext();
 
   useEffect(() => {
+
+    if(!encodedTextValue) return;
+
     const fetchCodeQr = async () => {
       const url = await generateCodeQr({
-        urlEncodedText: encodedText,
+        urlEncodedText: encodedTextValue,
         dimension: 400,
+        imageFormat: imageFormatValue,
       });
 
       setLoading(false);
@@ -23,7 +32,7 @@ export default function Home() {
     };
 
     fetchCodeQr();
-  }, [encodedText]);
+  }, [encodedTextValue, imageFormatValue]);
 
   return (
     <section className="flex flex-col lg:flex-row">
@@ -32,23 +41,26 @@ export default function Home() {
           <h2 className="text-4xl sm:text-6xl md:text-8xl text-primary font-bold max-w-xs md:max-w-lg font-kanit">
             Convert your Link to QR code
           </h2>
-          <form>
-            <input type="text" className="bg-background-muted w-full max-w-md px-3 md:px-5 py-2 md:py-3 rounded-md font-sans placeholder text-body placeholder:opacity-50 text-lg outline-none" placeholder="Enter or paste URL" />
-          </form>
+          <Input
+            className="max-w-md"
+            onChange={(e) => setEncodedTextValue(e.target.value)}
+            placeholder="Write something"
+          />
           <p className="text-body max-w-md">
-            Your QR code will be generated automatically, your generated QR code will open this URL.
+            Your QR code will be generated automatically, your generated QR code
+            will open this URL.
           </p>
         </div>
       </div>
-      <div className="flex-1 flex flex-col bg-secondary items-center gap-10 rounded-lg px-16 py-12">
-        <div className="flex justify-center rounded-lg border-2 border-border w-full bg-white p-12">
-          {imageUrl && !loading ? (
+      <div className="flex-1 flex flex-col bg-secondary justify-center items-center gap-10 rounded-lg p-6 lg:px-16 lg:py-12">
+        <div className="flex justify-center rounded-lg border-2 border-border w-full bg-white p-6 lg:p-12">
+          {imageUrl && !loading && encodedTextValue ? (
             <Image src={imageUrl} alt="qr-code" width={400} height={400} />
           ) : (
-            <QrLoader />
+            <Loader />
           )}
         </div>
-        <DownloadQr />
+        <Download imageUrl={imageUrl} />
       </div>
     </section>
   );
