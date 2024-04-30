@@ -1,5 +1,6 @@
 "use client";
 
+import DownloadQr from "@/components/DownloadQr";
 import QrLoader from "@/components/QrLoader";
 import { generateCodeQr } from "@/utils/generator";
 import Image from "next/image";
@@ -28,7 +29,7 @@ export default function Home() {
     <section className="flex flex-col lg:flex-row">
       <div className="flex-1 flex flex-col justify-center items-center bg-white rounded-lg px-4 md:px-16 py-6 md:py-12">
         <div className="max-w-xs md:max-w-lg space-y-8 mb-4">
-          <h2 className="text-4xl sm:text-6xl md:text-8xl text-primary font-bold max-w-xs md:max-w-lg">
+          <h2 className="text-4xl sm:text-6xl md:text-8xl text-primary font-bold max-w-xs md:max-w-lg font-kanit">
             Convert your Link to QR code
           </h2>
           <form>
@@ -39,14 +40,15 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div className="flex-1 flex flex-col bg-secondary items-center rounded-lg px-16 py-12">
-        <div className="rounded-lg border-2 border-border p-12 bg-white blur">
+      <div className="flex-1 flex flex-col bg-secondary items-center gap-10 rounded-lg px-16 py-12">
+        <div className="flex justify-center rounded-lg border-2 border-border w-full bg-white p-12">
           {imageUrl && !loading ? (
             <Image src={imageUrl} alt="qr-code" width={400} height={400} />
           ) : (
             <QrLoader />
           )}
         </div>
+        <DownloadQr />
       </div>
     </section>
   );

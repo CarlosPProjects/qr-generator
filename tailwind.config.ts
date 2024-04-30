@@ -16,6 +16,10 @@ const config: Config = {
           muted: "var(--body-muted)",
         },
         accent: "var(--accent)",
+        btn: {
+          DEFAULT: "var(--btn)",
+          muted: "var(--btn-muted)",
+        },
         background: {
           DEFAULT: "var(--background)",
           muted: "var(--background-muted)",
