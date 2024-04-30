@@ -42,7 +42,7 @@ const Download: FC<IDownloadProps> = ({ imageUrl }) => {
         Download
       </Button>
       <div className="flex flex-1 w-full flex-row gap-4 items-center justify-center sm:justify-end">
-        <span>File format:</span>
+        <p>File format:</p>
         <Select onValueChange={handleFormatChange}>
           <SelectTrigger className="w-[100px]">
             <SelectValue placeholder="PNG" />
