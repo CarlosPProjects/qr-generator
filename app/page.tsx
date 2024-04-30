@@ -7,7 +7,7 @@ export default function Home() {
     <section className="flex flex-col lg:flex-row">
       <div className="flex-1 flex flex-col justify-center items-center bg-white rounded-lg px-4 md:px-16 py-6 md:py-12">
         <div className="max-w-xs md:max-w-lg space-y-8 mb-4">
-          <h2 className="text-4xl sm:text-6xl md:text-8xl text-primary font-bold max-w-xs md:max-w-lg font-kanit">
+          <h2 className="text-5xl sm:text-6xl md:text-8xl text-primary font-bold max-w-xs md:max-w-lg font-kanit">
             Convert your Link to QR code
           </h2>
           <InputEncodeText />

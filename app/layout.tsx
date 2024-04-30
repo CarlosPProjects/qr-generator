@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <div className="container min-h-screen max-sm:px-4 flex flex-col justify-center">
-            <main className="bg-white __mainContainer">{children}</main>
+            <main className="bg-white __mainContainer my-8">{children}</main>
           </div>
         </Providers>
       </body>
