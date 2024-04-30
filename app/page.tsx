@@ -41,9 +41,9 @@ export default function Home() {
             Convert your Link to QR code
           </h2>
           <Input
-            className="max-w-md"
+            className="max-w-md bg-muted"
             onChange={(e) => setEncodedTextValue(e.target.value)}
-            placeholder="Write something"
+            placeholder="Enter or paste URL"
           />
           <p className="text-body max-w-md">
             Your QR code will be generated automatically, your generated QR code
