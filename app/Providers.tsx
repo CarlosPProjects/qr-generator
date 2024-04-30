@@ -2,6 +2,7 @@
 
 import { EncodedTextProvider } from "@/context/encoded-text.context";
 import { ImageFormatProvider } from "@/context/image-format.context";
+import { ImageUrlProvider } from "@/context/image-url.context";
 import React, { FC } from "react";
 
 interface IProvidersProps {
@@ -11,7 +12,9 @@ interface IProvidersProps {
 const Providers: FC<IProvidersProps> = ({ children }) => {
   return (
     <ImageFormatProvider>
-      <EncodedTextProvider>{children}</EncodedTextProvider>
+      <EncodedTextProvider>
+        <ImageUrlProvider>{children}</ImageUrlProvider>
+      </EncodedTextProvider>
     </ImageFormatProvider>
   );
 };

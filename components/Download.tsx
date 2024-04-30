@@ -12,19 +12,16 @@ import {
 import { useImageFormatContext } from "@/context/image-format.context";
 import { useEncodedTextContext } from "@/context/encoded-text.context";
 import { createDownloadLink } from "@/lib/utils";
-import { FC } from "react";
+import { useImageUrlContext } from "@/context/image-url.context";
 
-interface IDownloadProps {
-  imageUrl: string | null;
-}
-
-const Download: FC<IDownloadProps> = ({ imageUrl }) => {
+const Download = () => {
   const { imageFormatValue, setImageFormatValue } = useImageFormatContext();
   const { encodedTextValue } = useEncodedTextContext();
+  const { imageUrlValue } = useImageUrlContext();
 
   const handleDownload = async () => {
-    if (imageUrl) {
-      createDownloadLink(imageUrl, imageFormatValue);
+    if (imageUrlValue) {
+      createDownloadLink(imageUrlValue, imageFormatValue);
     }
   };
 
