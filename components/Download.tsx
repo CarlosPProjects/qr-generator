@@ -11,23 +11,20 @@ import {
 } from "@/components/ui/select";
 import { useImageFormatContext } from "@/context/image-format.context";
 import { useEncodedTextContext } from "@/context/encoded-text.context";
+import { createDownloadLink } from "@/lib/utils";
+import { FC } from "react";
 
-const Download = ({ imageUrl }: { imageUrl: string | null }) => {
+interface IDownloadProps {
+  imageUrl: string | null;
+}
+
+const Download: FC<IDownloadProps> = ({ imageUrl }) => {
   const { imageFormatValue, setImageFormatValue } = useImageFormatContext();
   const { encodedTextValue } = useEncodedTextContext();
 
   const handleDownload = async () => {
     if (imageUrl) {
-      const response = await fetch(imageUrl);
-      const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
-
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `qr-code.${imageFormatValue}`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      createDownloadLink(imageUrl, imageFormatValue);
     }
   };
 
