@@ -1,5 +1,6 @@
 export enum EImageFormat {
   PNG = "PNG",
   JPEG = "JPEG",
-  SVG = "SVG",
+  JPG = "JPG",
+  GIF = "GIF",
 }

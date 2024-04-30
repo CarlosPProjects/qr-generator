@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { useEncodedTextContext } from "@/context/encoded-text.context";
 import { useImageFormatContext } from "@/context/image-format.context";
 import { generateCodeQr } from "@/lib/generator";
-import { EImageFormat } from "@/types/image-format.interface";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
